@@ -1,4 +1,0 @@
-/Users/sen/Documents/Android/cmake/3.10.2.4988404/bin/ninja \
-  -C \
-  /Users/sen/Documents/project/trtc/AndroidUSBCamera/libnative/.cxx/Debug/5y67591x/arm64-v8a \
-  nativelib
