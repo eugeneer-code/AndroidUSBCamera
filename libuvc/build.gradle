@@ -42,7 +42,7 @@ String getNdkBuildPath() {
 	if (ndkBuildingDir==null || ndkBuildingDir.isEmpty()) {
 		Properties properties = new Properties()
 		properties.load(project.rootProject.file('local.properties').newDataInputStream())
-		ndkBuildingDir = properties.getProperty("ndk.dir")
+		ndkBuildingDir = properties.getProperty("custom.ndk.dir")
 	}
 	def ndkBuildPath = ndkBuildingDir
 	if (Os.isFamily(Os.FAMILY_WINDOWS)) {

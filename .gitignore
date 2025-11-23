@@ -10,3 +10,5 @@
 .externalNativeBuild
 .tags*
 .cxx/
+/libuvc/src/main/libs/arm64-v8a/*
+/libuvc/src/main/obj
