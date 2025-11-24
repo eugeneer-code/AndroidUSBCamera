@@ -4,6 +4,7 @@ plugins {
 }
 
 android {
+    namespace = "com.jiangdg.ausbc"
     compileSdkVersion rootProject.ext.versionCompiler
 
     defaultConfig {
@@ -33,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:${androidXVersion}"
+    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
     implementation "androidx.constraintlayout:constraintlayout:${constraintlayoutVersion}"
     implementation "com.google.android.material:material:${materialVersion}"
     api 'com.elvishew:xlog:1.11.0'

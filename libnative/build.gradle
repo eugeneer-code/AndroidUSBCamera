@@ -4,7 +4,9 @@ plugins {
 }
 
 android {
+    namespace "com.jiangdg.natives"
     compileSdkVersion rootProject.ext.versionCompiler
+    ndkVersion rootProject.ext.ndkVersion
 
     defaultConfig {
         minSdkVersion rootProject.ext.minSdkVersion
@@ -16,7 +18,8 @@ android {
         consumerProguardFiles "consumer-rules.pro"
         externalNativeBuild {
             cmake {
-                cppFlags ""
+                cppFlags += "-std=c++17"
+                arguments "-DANDROID_STL=c++_shared"
             }
             ndk{
                 abiFilters 'armeabi-v7a','arm64-v8a', "x86", "x86_64"
@@ -48,7 +51,7 @@ android {
 dependencies {
 
     implementation "androidx.core:core-ktx:${androidXVersion}"
-    implementation "androidx.appcompat:appcompat:${androidXVersion}"
+    implementation "androidx.appcompat:appcompat:${appcompatVersion}"
     implementation "com.google.android.material:material:${materialVersion}"
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

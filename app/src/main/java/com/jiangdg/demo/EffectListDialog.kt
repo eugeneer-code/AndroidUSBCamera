@@ -32,6 +32,8 @@ import com.jiangdg.ausbc.render.effect.bean.CameraEffect
 import com.jiangdg.utils.MMKVUtils
 import com.jiangdg.ausbc.utils.Utils
 import com.jiangdg.utils.imageloader.ImageLoaders
+import com.jiangdg.ausbc.R
+import com.jiangdg.demo.R as DemoR
 
 /** Effect list dialog
  *
@@ -48,12 +50,12 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
     private var mEffectList: ArrayList<CameraEffect> = ArrayList()
     private val mEffectMap = HashMap<Int, List<CameraEffect>>()
 
-    override fun getContentLayoutId(): Int = R.layout.dialog_effects
+    override fun getContentLayoutId(): Int = DemoR.layout.dialog_effects
 
     init {
         mDialog.window?.let {
             it.setGravity(Gravity.BOTTOM)
-            it.setWindowAnimations(R.style.camera2_anim_down_to_top)
+            it.setWindowAnimations(DemoR.style.camera2_anim_down_to_top)
 
             it.attributes?.run {
                 width = WindowManager.LayoutParams.MATCH_PARENT
@@ -78,9 +80,9 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
                 }
             }
         }
-        mRecyclerView = mDialog.findViewById(R.id.filterRv)
-        mFilterTabBtn = mDialog.findViewById(R.id.tabFilterBtn)
-        mAnimTabBtn = mDialog.findViewById(R.id.tabAnimBtn)
+        mRecyclerView = mDialog.findViewById(DemoR.id.filterRv)
+        mFilterTabBtn = mDialog.findViewById(DemoR.id.tabFilterBtn)
+        mAnimTabBtn = mDialog.findViewById(DemoR.id.tabAnimBtn)
         mAnimTabBtn?.setOnClickListener(this)
         mFilterTabBtn?.setOnClickListener(this)
         mRecyclerView?.layoutManager =
@@ -104,12 +106,12 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
         getCurAnimationId().let { curAnimId ->
             if (curAnimId != CameraEffect.ID_NONE_ANIMATION) {
                 mAnimTabBtn?.typeface = Typeface.DEFAULT_BOLD
-                mAnimTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.black))
+                mAnimTabBtn?.setTextColor(getDialog().context.resources.getColor(DemoR.color.black))
                 mAnimTabBtn?.setCompoundDrawablesWithIntrinsicBounds(
                     0,
                     0,
                     0,
-                    R.drawable.ic_tab_line_blue
+                    DemoR.drawable.ic_tab_line_blue
                 )
                 mFilterTabBtn?.typeface = Typeface.DEFAULT
                 mFilterTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.common_a8_black))
@@ -117,7 +119,7 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
                     0,
                     0,
                     0,
-                    R.drawable.ic_tab_line_white
+                    DemoR.drawable.ic_tab_line_white
                 )
                 mAdapter?.setNewData(mEffectMap[CameraEffect.CLASSIFY_ID_ANIMATION])
                 mAdapter?.setCurrEffect(mAdapter?.data?.find { it.id == curAnimId })
@@ -126,12 +128,12 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
         }
         val curFilterId = getCurFilterId()
         mFilterTabBtn?.typeface = Typeface.DEFAULT_BOLD
-        mFilterTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.black))
+        mFilterTabBtn?.setTextColor(getDialog().context.resources.getColor(DemoR.color.black))
         mFilterTabBtn?.setCompoundDrawablesWithIntrinsicBounds(
             0,
             0,
             0,
-            R.drawable.ic_tab_line_blue
+            DemoR.drawable.ic_tab_line_blue
         )
         mAnimTabBtn?.typeface = Typeface.DEFAULT
         mAnimTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.common_a8_black))
@@ -139,7 +141,7 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
             0,
             0,
             0,
-            R.drawable.ic_tab_line_white
+            DemoR.drawable.ic_tab_line_white
         )
         mAdapter?.setNewData(mEffectMap[CameraEffect.CLASSIFY_ID_FILTER])
         mAdapter?.setCurrEffect(mAdapter?.data?.find { it.id == curFilterId })
@@ -168,14 +170,14 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.tabFilterBtn -> {
+            DemoR.id.tabFilterBtn -> {
                 mFilterTabBtn?.typeface = Typeface.DEFAULT_BOLD
-                mFilterTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.black))
+                mFilterTabBtn?.setTextColor(getDialog().context.resources.getColor(DemoR.color.black))
                 mFilterTabBtn?.setCompoundDrawablesWithIntrinsicBounds(
                     0,
                     0,
                     0,
-                    R.drawable.ic_tab_line_blue
+                    DemoR.drawable.ic_tab_line_blue
                 )
                 mAnimTabBtn?.typeface = Typeface.DEFAULT
                 mAnimTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.common_a8_black))
@@ -183,19 +185,19 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
                     0,
                     0,
                     0,
-                    R.drawable.ic_tab_line_white
+                    DemoR.drawable.ic_tab_line_white
                 )
                 mAdapter?.setNewData(mEffectMap[CameraEffect.CLASSIFY_ID_FILTER])
                 mAdapter?.setCurrEffect(mAdapter?.data?.find { it.id == getCurFilterId() })
             }
-            R.id.tabAnimBtn -> {
+            DemoR.id.tabAnimBtn -> {
                 mAnimTabBtn?.typeface = Typeface.DEFAULT_BOLD
-                mAnimTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.black))
+                mAnimTabBtn?.setTextColor(getDialog().context.resources.getColor(DemoR.color.black))
                 mAnimTabBtn?.setCompoundDrawablesWithIntrinsicBounds(
                     0,
                     0,
                     0,
-                    R.drawable.ic_tab_line_blue
+                    DemoR.drawable.ic_tab_line_blue
                 )
                 mFilterTabBtn?.typeface = Typeface.DEFAULT
                 mFilterTabBtn?.setTextColor(getDialog().context.resources.getColor(R.color.common_a8_black))
@@ -203,7 +205,7 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
                     0,
                     0,
                     0,
-                    R.drawable.ic_tab_line_white
+                    DemoR.drawable.ic_tab_line_white
                 )
                 mAdapter?.setNewData(mEffectMap[CameraEffect.CLASSIFY_ID_ANIMATION])
                 mAdapter?.setCurrEffect(mAdapter?.data?.find { it.id == getCurAnimationId() })
@@ -224,7 +226,7 @@ class EffectListDialog(activity: Activity) : BaseDialog(activity, portraitWidthR
 }
 
 private class EffectListAdapter :
-    BaseQuickAdapter<CameraEffect, BaseViewHolder>(R.layout.dialog_effect_item) {
+    BaseQuickAdapter<CameraEffect, BaseViewHolder>(DemoR.layout.dialog_effect_item) {
 
     private var mCurrEffect: CameraEffect? = null
 
@@ -257,20 +259,20 @@ private class EffectListAdapter :
     }
 
     override fun convert(helper: BaseViewHolder, item: CameraEffect) {
-        helper.setText(R.id.effectName, item.name)
-        helper.getView<ImageView>(R.id.effectIv).also {
+        helper.setText(DemoR.id.effectName, item.name)
+        helper.getView<ImageView>(DemoR.id.effectIv).also {
             item.coverResId?.apply {
                 ImageLoaders.of(mContext).loadCircle(it, this, R.drawable.effect_none)
                 return@also
             }
             ImageLoaders.of(mContext).loadCircle(it, item.coverUrl, R.drawable.effect_none)
         }
-        helper.addOnClickListener(R.id.effectIv)
+        helper.addOnClickListener(DemoR.id.effectIv)
         // update check status
         (mCurrEffect?.id == item.id).let { isCheck ->
             val textColor = if (isCheck) 0xFF2E5BFF else 0xFF232325
-            helper.setTextColor(R.id.effectName, textColor.toInt())
-            helper.setVisible(R.id.effectCheckIv, isCheck)
+            helper.setTextColor(DemoR.id.effectName, textColor.toInt())
+            helper.setVisible(DemoR.id.effectCheckIv, isCheck)
         }
 
     }
