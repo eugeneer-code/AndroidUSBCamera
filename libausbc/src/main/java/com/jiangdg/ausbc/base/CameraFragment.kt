@@ -88,6 +88,15 @@ abstract class CameraFragment : BaseFragment(), ICameraStateCallBack {
         mCameraClient = MultiCameraClient(requireContext(), object : IDeviceConnectCallBack {
             override fun onAttachDev(device: UsbDevice?) {
                 device ?: return
+                getDefaultCamera()?.apply {
+                    val isSupported = device.vendorId == vendorId && device.productId != productId
+
+                    if (!isSupported) {
+                        Logger.i(TAG, "Device filtered: VID=${device.vendorId}, PID=${device.productId}")
+                        return
+                    }
+                }
+
                 context?.let {
                     if (mCameraMap.containsKey(device.deviceId)) {
                         if (Build.VERSION.SDK_INT >= 34) {
